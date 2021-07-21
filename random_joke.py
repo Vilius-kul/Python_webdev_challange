@@ -10,11 +10,6 @@ app = Flask(__name__)
 url = 'https://official-joke-api.appspot.com/random_joke'
 response = requests.get(url)
 
-#return api data as dictionary
-api_dict = json.loads(response.text)
-
-print (api_dict)
-
 
 
 @app.route("/")
@@ -23,7 +18,10 @@ def hello_world():
 
 @app.route("/random-joke")
 def return_joke():
-    nl = '\n'
+
+    #return api data as dictionary
+    api_dict = json.loads(response.text)
+
     return f"{api_dict['setup']}...{api_dict['punchline']}"
 
 
