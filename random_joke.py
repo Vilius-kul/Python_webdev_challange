@@ -8,7 +8,6 @@ import json
 app = Flask(__name__)
 
 url = 'https://official-joke-api.appspot.com/random_joke'
-response = requests.get(url)
 
 
 
@@ -18,6 +17,7 @@ def hello_world():
 
 @app.route("/random-joke")
 def return_joke():
+    response = requests.get(url)
 
     #return api data as dictionary
     api_dict = json.loads(response.text)
