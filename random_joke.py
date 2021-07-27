@@ -1,25 +1,14 @@
-#Flask app
 from flask import Flask
-import requests
-import json
-
-
+from classes import JokeApi
 
 app = Flask(__name__)
 
-url = 'https://official-joke-api.appspot.com/random_joke'
-
-
 @app.route("/random-joke")
 def return_joke():
-    response = requests.get(url)
 
-    #return api data as json
-    api_dict = response.json()
-
-    #using f string to print out values from json()
-    return f"{api_dict['setup']}...{api_dict['punchline']}"
-
+    joke = JokeApi.get_random_joke()
+    
+    return f"{joke['setup']}...{joke['punchline']}"
 
 
 if __name__=='__main__':
