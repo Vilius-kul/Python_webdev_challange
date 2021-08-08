@@ -1,5 +1,5 @@
 from flask import Flask
-from classes import JokeApi
+from clients import JokeApi
 
 app = Flask(__name__)
 
