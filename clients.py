@@ -1,6 +1,6 @@
 import requests
 import urllib.parse as urlparse
-from urllib.parse import urljoin, parse_qs
+from urllib.parse import urljoin
 
 class JokeApi:
 
@@ -36,24 +36,6 @@ class JokeApi:
         for j in range(userInput):
             jokes+= cls.get_random_joke()
         return jokes
-
-
-    #################one of my attemps####################
-    # @staticmethod
-    # def input_validator():
-    #     while True:
-    #     try:
-    #         userInput = int(request.args.get('count'))
-    #         if userInput < 0 or userInput> 15:
-    #             raise ValueError
-    #     except ValueError:
-    #         print("Invalid input")
-    #     else:            
-    #         return userInput  
-
-
-
-
 
 
 """

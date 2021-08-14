@@ -14,32 +14,8 @@ def return_five():
 
 @app.route("/multi-random-joke")
 def multiple_joke():
-    userInput = int(request.args.get('count'))
+    userInput = int(request.args.get('count')) #this might need to be replaced/validated using pydantic
     return JokeApi.multiple_jokes(userInput)
-
-
-
-###################Stuck####################################
-# def input_validator():
-#     while True:
-#         try:
-#             userInput = int(request.args.get('count'))
-#             if userInput < 0 or userInput> 15:
-#                 raise ValueError
-#         except ValueError:
-#             print("Invalid input")
-#         else:            
-#             return userInput
-
-
-
-            
-
-    
-            
-
-
-
 
 
 if __name__=='__main__':
