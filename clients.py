@@ -1,6 +1,7 @@
 import requests
 import urllib.parse as urlparse
 from urllib.parse import urljoin
+from pydantic import BaseModel
 
 class JokeApi:
 
@@ -29,30 +30,18 @@ class JokeApi:
         
         return jokes
 
-    #Returns multiple random jokes
-    @classmethod
-    def multiple_jokes(cls, userInput =0):
-        jokes = ""
-        for j in range(userInput):
-            jokes+= cls.get_random_joke()
-        return jokes
+class Inports(BaseModel):
+    count: int
 
 
-"""
-Create a separate endpoint, /multi-random-joke, that can return multiple jokes depending on how many
- the client (requestor) has asked for.
- 
- This will involve being able to extract a query parameter from a url and pass it into your flask function.
-  A request url may look like:
- 
-/multi-random-joke?count=3
- 
-And your API would return three random jokes. 
- 
-Top tips:
- 
-* Try to keep your functions in the `random_joke.py` as small as possible. 
-Their only job is to consume data from the request, call some other function, then return data back to the client.
-* Maybe also place a limit on the maximum number of jokes that can be requested and properly handle invalid counts
- for example a string instead of a number.
-"""
+
+    ##############Ignore fore now################    
+    # #Returns multiple random jokes
+    # @classmethod
+    # def multiple_jokes(cls, userInput =0):
+    #     jokes = ""
+    #     for j in range(userInput):
+    #         jokes+= cls.get_random_joke()
+    #     return jokes
+
+

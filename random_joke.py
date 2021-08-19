@@ -1,5 +1,6 @@
 from flask import Flask,request
 from clients import JokeApi
+from clients import Inports
 
 app = Flask(__name__)
 
@@ -14,8 +15,12 @@ def return_five():
 
 @app.route("/multi-random-joke")
 def multiple_joke():
-    userInput = int(request.args.get('count')) #this might need to be replaced/validated using pydantic
-    return JokeApi.multiple_jokes(userInput)
+    data = int(request.args.get('count'))
+    count = Inports(data)
+    print(count)
+
+    return "Todo...."
+    
 
 
 if __name__=='__main__':
