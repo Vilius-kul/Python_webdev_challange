@@ -1,7 +1,5 @@
 import requests
-import urllib.parse as urlparse
 from urllib.parse import urljoin
-from pydantic import BaseModel
 
 class JokeApi:
 
@@ -30,18 +28,12 @@ class JokeApi:
         
         return jokes
 
-class Inports(BaseModel):
-    count: int
-
-
-
-    ##############Ignore fore now################    
-    # #Returns multiple random jokes
-    # @classmethod
-    # def multiple_jokes(cls, userInput =0):
-    #     jokes = ""
-    #     for j in range(userInput):
-    #         jokes+= cls.get_random_joke()
-    #     return jokes
+    #Returns multiple random jokes
+    @classmethod
+    def multiple_jokes(cls, userInput =0):
+        jokes = ""
+        for j in range(userInput):
+            jokes+= cls.get_random_joke()
+        return jokes
 
 

@@ -1,6 +1,7 @@
 from flask import Flask,request
 from clients import JokeApi
-from clients import Inports
+from schemas import MultipleJokesRequestParams
+from pydantic import ValidationError
 
 app = Flask(__name__)
 
@@ -15,13 +16,21 @@ def return_five():
 
 @app.route("/multi-random-joke")
 def multiple_joke():
-    data = int(request.args.get('count'))
-    count = Inports(data)
-    print(count)
-
-    return "Todo...."
-    
+    # Raw query data
+    raw_request = request.args
+    #Input validation usin pydantic
+    try:
+        MultipleJokesRequestParams(**raw_request)
+    except ValidationError as e:
+        return(e.json())
+    else:
+        request_data = MultipleJokesRequestParams(**raw_request)
+        if request_data.count not in range(1,11):
+            return "Out of range! Try 1 to 10."
+        else:
+            return JokeApi.multiple_jokes(request_data.count)
 
 
 if __name__=='__main__':
     app.run(debug=False)
+
