@@ -21,14 +21,11 @@ def multiple_joke():
     #Input validation usin pydantic
     try:
         MultipleJokesRequestParams(**raw_request)
-    except ValidationError as e:
-        return(e.json())
-    else:
-        request_data = MultipleJokesRequestParams(**raw_request)
-        if request_data.count not in range(1,11):
-            return "Out of range! Try 1 to 10."
-        else:
-            return JokeApi.multiple_jokes(request_data.count)
+    except ValidationError as exc:
+        return(str(exc))
+    #instanciate object after validation    
+    request_data = MultipleJokesRequestParams(**raw_request)
+    return JokeApi.multiple_jokes(request_data.count)
 
 
 if __name__=='__main__':
