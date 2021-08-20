@@ -20,11 +20,10 @@ def multiple_joke():
     raw_request = request.args
     #Input validation usin pydantic
     try:
-        MultipleJokesRequestParams(**raw_request)
+        request_data = MultipleJokesRequestParams(**raw_request)
     except ValidationError as exc:
         return(str(exc))
-    #instanciate object after validation    
-    request_data = MultipleJokesRequestParams(**raw_request)
+        
     return JokeApi.multiple_jokes(request_data.count)
 
 
