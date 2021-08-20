@@ -1,10 +1,8 @@
 from pydantic import BaseModel, validator
 
-#inputi type validation
 class MultipleJokesRequestParams(BaseModel):
     count: int
 
-    #in range validation
     @validator('count')
     def is_in_range(cls, value):
         if value not in range(1,11):
