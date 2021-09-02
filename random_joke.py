@@ -25,18 +25,19 @@ def multiple_joke():
         return(str(exc))
 
     return JokeApi.multiple_jokes(request_data.count)
-    
 
+# mock/test translator
 @app.route("/multi-language-jokes")
-def test_trans():
+def test_translator():
+    # Raw query data
     raw_request = request.args
     try:
         request_data = MultipleJokesRequestParams(**raw_request)
     except ValidationError as exc:
         return(str(exc))
-
-    string = JokeApi.multiple_jokes(request_data.count)
-    return JokeTranslator.get_joke(string)
+    joke = JokeApi.multiple_jokes(request_data.count)    
+    langInput = request_data.language
+    return JokeTranslator.get_joke(joke,langInput)
 
 
 
