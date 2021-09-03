@@ -3,6 +3,7 @@ from clients import JokeApi
 from schemas import MultipleJokesRequestParams
 from pydantic import ValidationError
 from translate import Translator
+
 app = Flask(__name__)
 
 
@@ -26,7 +27,6 @@ def multiple_joke():
 
     return JokeApi.multiple_jokes(request_data.count)
 
-# mock/test translator
 @app.route("/multi-language-jokes")
 def test_translator():
     # Raw query data
@@ -37,11 +37,11 @@ def test_translator():
         return(str(exc))
     jokes = JokeApi.multiple_jokes(request_data.count)
     langInput = request_data.language
-    
-    return Translator.translate(jokes,langInput)
 
-    # translated_jokes = [Translator.translate(joke) for joke in jokes]
+    #Mock translator function
+    # return Translator.translate(jokes,langInput)
 
+    return Translator.watson_translate(jokes,langInput)
 
 
 if __name__=='__main__':
