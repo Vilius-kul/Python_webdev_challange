@@ -28,7 +28,7 @@ def multiple_joke():
     return JokeApi.multiple_jokes(request_data.count)
 
 @app.route("/multi-language-jokes")
-def test_translator():
+def api_translate():
     # Raw query data
     raw_request = request.args
     try:
