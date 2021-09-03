@@ -2,7 +2,7 @@ from flask import Flask,request
 from clients import JokeApi
 from schemas import MultipleJokesRequestParams
 from pydantic import ValidationError
-from translate import JokeTranslator
+from translate import Translator
 app = Flask(__name__)
 
 
@@ -35,9 +35,12 @@ def test_translator():
         request_data = MultipleJokesRequestParams(**raw_request)
     except ValidationError as exc:
         return(str(exc))
-    joke = JokeApi.multiple_jokes(request_data.count)    
+    jokes = JokeApi.multiple_jokes(request_data.count)
     langInput = request_data.language
-    return JokeTranslator.get_joke(joke,langInput)
+    
+    return Translator.translate(jokes,langInput)
+
+    # translated_jokes = [Translator.translate(joke) for joke in jokes]
 
 
 
