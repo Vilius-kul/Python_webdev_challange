@@ -15,9 +15,9 @@ class JokeApi:
         response = requests.get(url)
         setup = response.json()['setup']
         punchline = response.json()['punchline']
-        joke = "{}...  {}".format(setup,punchline)
+        jokes = "{}...  {}".format(setup,punchline)
         
-        return joke
+        return jokes
         
     #Returns 5 random jokes
     @classmethod
