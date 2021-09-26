@@ -26,7 +26,7 @@ def multiple_jokes():
         return(str(exc))
     list_jokes = JokeApi.multiple_jokes(request_data.count)
     #from list to string, each joke in a new line
-    str_jokes ="<br>".join([str(joke) for joke in list_jokes])
+    str_jokes =" ".join([str(joke) for joke in list_jokes])
     return str_jokes
     
 

@@ -24,7 +24,7 @@ class JokeApi:
     def five_jokes(cls):
         jokes =""
         for j in range(6):
-            jokes+=cls.get_random_joke()+"<br>"
+            jokes+=cls.get_random_joke()
         
         return jokes
 

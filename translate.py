@@ -20,12 +20,12 @@ class Translator:
         #from dict to str + new line after each joke
         string =''
         for j in translation['translations']:
-            string += j['translation']+"<br>"
+            string += j['translation']
         return string
 
     #mock translator
     @staticmethod
     def translate(text: str, language: str) -> str:
-        jstring ='<br>'.join([j for j in text])
+        jstring =''.join([j for j in text])
 
-        return f"{jstring} <br> Selected language to translate to:  {language}"
+        return f"{jstring} Selected language to translate to: {language}"
