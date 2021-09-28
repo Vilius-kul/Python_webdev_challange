@@ -25,7 +25,7 @@ def multiple_jokes():
     except ValidationError as exc:
         return(str(exc))
     list_jokes = JokeApi.multiple_jokes(request_data.count)
-    #from list to string, each joke in a new line
+    #from list to string
     str_jokes =" ".join([str(joke) for joke in list_jokes])
     return str_jokes
     
@@ -38,13 +38,13 @@ def api_translate():
         request_data = MultipleJokesRequestParams(**raw_request)
     except ValidationError as exc:
         return(str(exc))
-    jokes = JokeApi.multiple_jokes(request_data.count)
+    list_jokes = JokeApi.multiple_jokes(request_data.count)
+    str_jokes =" ".join([str(joke) for joke in list_jokes])
     langInput = request_data.language
-
+    translated = Translator.watson_translate(list_jokes,langInput)
     #Mock translator function
     # return Translator.translate(jokes,langInput)
-
-    return Translator.watson_translate(jokes,langInput)
+    return f"Original language: {str_jokes} ---> {langInput.upper()} TRANSLATIONS: {translated}"
 
 
 if __name__=='__main__':

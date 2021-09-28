@@ -2,22 +2,40 @@ import requests
 from urllib.parse import urljoin
 
 class JokeApi:
-
-    base_url = "https://official-joke-api.appspot.com/"
-
     
-    #returns a random joke
+    base_url = "https://v2.jokeapi.dev/joke/"
+    
     @classmethod
     def get_random_joke(cls):
-
-        endpoint = "random_joke"
+        endpoint= "any"
         url = urljoin(cls.base_url, endpoint)
-        response = requests.get(url)
-        setup = response.json()['setup']
-        punchline = response.json()['punchline']
-        jokes = "{}...  {}".format(setup,punchline)
+        response = requests.get(url).json()
+        joke = ''
+        if response["type"] == "twopart":
+            joke += f"{response['setup']}... {response['delivery']}"
+            # return f"{response['setup']}... {response['delivery']}"
+        else:
+            joke += response["joke"]
+            
+        return joke
+    
+    
+    # API not working anymore
+    # base_url = "https://official-joke-api.appspot.com/"
+
+    
+    # #returns a random joke
+    # @classmethod
+    # def get_random_joke(cls):
+
+    #     endpoint = "random_joke"
+    #     url = urljoin(cls.base_url, endpoint)
+    #     response = requests.get(url)
+    #     setup = response.json()['setup']
+    #     punchline = response.json()['punchline']
+    #     jokes = "{}...  {}".format(setup,punchline)
         
-        return jokes
+    #     return jokes
         
     #Returns 5 random jokes
     @classmethod
