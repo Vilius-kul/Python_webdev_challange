@@ -15,7 +15,7 @@ def return_joke():
 def return_five():
     return JokeApi.five_jokes()        
 
-@app.route("/multi-random-joke")
+@app.route("/multi-random-jokes")
 def multiple_jokes():
     # Raw query data
     raw_request = request.args
