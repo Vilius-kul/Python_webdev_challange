@@ -41,12 +41,12 @@ def api_translate():
     list_jokes = JokeApi.multiple_jokes(request_data.count)
     str_jokes =" ".join([str(joke) for joke in list_jokes])
     langInput = request_data.language
-    translated = Translator.watson_translate(list_jokes,langInput)
+    translated = Translator.watson_translate(str_jokes,langInput)
     #Mock translator function
-    # return Translator.translate(jokes,langInput)
+    # return Translator.translate(str_jokes,langInput)
     return f"Original language: {str_jokes} ---> {langInput.upper()} TRANSLATIONS: {translated}"
 
 
 if __name__=='__main__':
-    app.run(debug=False)
+    app.run(debug=True)
 

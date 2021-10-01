@@ -14,8 +14,7 @@ class Translator:
         #Authentication 
         cls.language_translator.set_service_url(TRANSLATION_URL)
         #translation via ibm_watson api
-        translation = cls.language_translator.translate(text=joke,
-                                                source='en', target=langInput).get_result()
+        translation = cls.language_translator.translate(text=joke,source='en',target=langInput).get_result()
         #from dict to str + new line after each joke
         string =''
         for j in translation['translations']:
