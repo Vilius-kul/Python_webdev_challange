@@ -1,0 +1,6 @@
+assert raises exception
+write tests fir language validator language
+look into coverage.py
+mocking (with Scott) - read into pytest-mocking.py
+set up static checks (flake8)
+get coverage to 100% - this will mean deleting unused code
