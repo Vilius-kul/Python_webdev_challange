@@ -1,5 +1,5 @@
 assert raises exception
-write tests fir language validator language
+write tests for language validator language
 look into coverage.py
 mocking (with Scott) - read into pytest-mocking.py
 set up static checks (flake8)
