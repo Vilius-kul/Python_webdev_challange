@@ -58,4 +58,4 @@ def test_not_in_lang_list():
             language=not_valid_language
         )
     # Assert
-    assert "Wrong input!" in str(excinfo)
+    assert "Wrong input! Please type 'pl' for Polish,'lt' for Lithuanian, 'da' for Danish or 'ru' for Russian"" in str(excinfo)"
