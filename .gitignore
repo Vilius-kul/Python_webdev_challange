@@ -1,5 +1,7 @@
 .vscode/
 __pycache__
-venv
+.venv
 testing
 api.txt
+start_server.sh
+htmlcov
