@@ -1,15 +1,6 @@
 assert raises exception
 write tests for language validator language
-look into coverage.py(
-<<<<<<< HEAD
-Name                                          Stmts   Miss  Cover
------------------------------------------------------------------
-src/schemas.py                                   16      0   100%
-tests/test_multiple_jokes_request_params.py      20      0   100%
------------------------------------------------------------------
-TOTAL                                            36      0   100%
-=======
-)
+look into coverage.py
 mocking (with Scott) - read into pytest-mocking.py
 set up static checks (flake8)
 get coverage to 100% - this will mean deleting unused code
