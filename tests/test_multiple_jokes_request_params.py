@@ -7,13 +7,10 @@ def test_is_in_range_with_valid_range():
     valid_count = 5
 
     # Act
-    MultipleJokesRequestParams(
-        count=valid_count,
-        language="pl"
-    )
+    result = MultipleJokesRequestParams(count=valid_count, language="pl")
 
     # Assert
-    pass  # does not raise ValueError
+    assert result.count == valid_count
 
 
 def test_is_not_in_range_with_invalid_range():
@@ -23,10 +20,7 @@ def test_is_not_in_range_with_invalid_range():
 
     with pytest.raises(Exception) as excinfo:
         # Act
-        MultipleJokesRequestParams(
-            count=not_valid_count,
-            language="pl"
-        )
+        MultipleJokesRequestParams(count=not_valid_count, language="pl")
 
     # Assert
     assert "Out of range! Try 1 to 10." in str(excinfo.value)
@@ -37,12 +31,9 @@ def test_is_in_lang_list():
     # Arrange
     valid_language = "lt"
     # Act
-    MultipleJokesRequestParams(
-        count=1,
-        language=valid_language
-    )
+    result = MultipleJokesRequestParams(count=1, language=valid_language)
     # Assert
-    pass  # does not raise ValueError
+    assert result.language == valid_language
 
 
 def test_not_in_lang_list():
@@ -52,9 +43,9 @@ def test_not_in_lang_list():
 
     with pytest.raises(Exception) as excinfo:
         # Act
-        MultipleJokesRequestParams(
-            count=1,
-            language=not_valid_language
-        )
+        MultipleJokesRequestParams(count=1, language=not_valid_language)
     # Assert
-    assert "Wrong input! Please type 'pl' for Polish,'lt' for Lithuanian, 'da' for Danish or 'ru' for Russian" in str(excinfo)
+    assert (
+        "Wrong input! Please type 'pl' for Polish,'lt' for Lithuanian, 'da' for Danish or 'ru' for Russian"
+        in str(excinfo)
+    )
