@@ -12,6 +12,8 @@ class JokeApi:
         endpoint = "Any?blacklistFlags=nsfw,racist,sexist,explicit"
         url = urljoin(cls.base_url, endpoint)
         response = requests.get(url).json()
+        print(response)
+
         joke = ""
         if response["type"] == "twopart":
             joke += f"{response['setup']}... {response['delivery']}"
@@ -23,9 +25,9 @@ class JokeApi:
     # Returns 5 random jokes
     @classmethod
     def five_jokes(cls):
-        jokes = ""
-        for j in range(6):
-            jokes += cls.get_random_joke()
+        jokes = []
+        for j in range(5):
+            jokes.append(cls.get_random_joke())
 
         return jokes
 
