@@ -3,4 +3,5 @@
 current_dir=$(pwd)
 export PYTHONPATH=$PYTHONPATH:$current_dir
 
-pytest tests
+
+coverage run -m pytest tests --flakes -v

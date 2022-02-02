@@ -5,3 +5,5 @@ testing
 api.txt
 start_server.sh
 htmlcov
+.coverage
+.coverage
